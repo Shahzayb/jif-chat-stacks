@@ -1,7 +1,6 @@
-
 [project]
 name = "."
-
-[contracts]
-
-[notebooks]
+requirements = []
+[contracts.jif-token]
+path = "contracts/jif-token.clar"
+depends_on = []
