@@ -40,6 +40,7 @@ module.exports = {
     'testing-library/prefer-presence-queries': 'error',
     'testing-library/prefer-screen-queries': 'error',
     'testing-library/prefer-wait-for': 'error',
+    'react/prop-types': 'off',
   },
   settings: {
     'import/resolver': {
