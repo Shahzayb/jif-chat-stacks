@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {userSession} from 'common/stacks';
 
-const user = userSession?.loadUserData?.();
+const user = userSession?.isUserSignedIn?.() ? userSession?.loadUserData?.() : null;
 
 const authSlice = createSlice({
   name: 'auth',

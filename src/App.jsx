@@ -2,6 +2,7 @@ import React from 'react';
 import {Connect} from '@stacks/connect-react';
 import AccountName from 'components/AccountName';
 import ConnectWalletButton from 'components/ConnectWalletButton';
+import SignOutButton from 'components/SignOutButton';
 import {useConnectAuthOptions} from 'common/hooks/useConnectAuthOptions';
 import {useUser} from 'common/hooks/useUser';
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <AppWrapper>
       <ConnectWalletButton />
+      <SignOutButton />
       <ShowUser />
       <AccountName />
     </AppWrapper>

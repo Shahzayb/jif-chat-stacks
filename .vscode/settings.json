@@ -1,6 +1,5 @@
-
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.detectIndentation": true,
   "editor.fontFamily": "'Dank Mono', Menlo, Monaco, 'Courier New', monospace",
@@ -14,6 +13,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.suggestSelection": "recentlyUsed",
     "editor.suggest.showKeywords": false
+  },
+  "[clarity]": {
+    "editor.defaultFormatter": "friedger.vscode-clarity-formatter",
+    "editor.formatOnSave": false
   },
   "editor.renderWhitespace": "boundary",
   "files.exclude": {
@@ -35,5 +38,5 @@
   "editor.cursorSmoothCaretAnimation": true,
   "editor.smoothScrolling": true,
   "files.eol": "\n",
-    "deno.enable": true,
+  "deno.enable": true
 }
