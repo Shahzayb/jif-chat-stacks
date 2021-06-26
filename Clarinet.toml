@@ -1,13 +1,14 @@
 [project]
 name = "jif-chat"
 requirements = []
-[contracts.jif-chat]
-path = "contracts/jif-chat.clar"
-depends_on = []
 
 [contracts.jif-token]
 path = "contracts/jif-token.clar"
 depends_on = ["sip-010-trait"]
+
+[contracts.jif-chat]
+path = "contracts/jif-chat.clar"
+depends_on = ["jif-token"]
 
 [contracts.sip-010-trait]
 path = "contracts/traits/sip-010.clar"
