@@ -31,6 +31,7 @@ module.exports = {
     ],
     'no-underscore-dangle': ['error', {allow: ['_id']}],
     'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'operator-linebreak': ['error', 'after', {overrides: {'?': 'ignore', ':': 'ignore'}}],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',

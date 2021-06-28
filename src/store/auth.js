@@ -26,7 +26,7 @@ const authSlice = createSlice({
 export const {setAuthUser, setAuthLoading, setAccountNames} = authSlice.actions;
 
 export const userSelector = state => state.auth.user;
-
+export const authLoadingSelector = state => state.auth.loading;
 export const accountNamesSelector = state => state.auth.accountNames;
 
 export default authSlice.reducer;
