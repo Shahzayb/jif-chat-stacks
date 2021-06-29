@@ -18,9 +18,9 @@ import {
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddIcon from '@material-ui/icons/Add';
 import {useUser} from 'common/hooks/useUser';
-import AccountBalance from 'components/AccountBalance';
-import AccountName from 'components/AccountName';
-import ConnectWalletButton from 'components/ConnectWalletButton';
+import AccountBalance from 'components/shared/AccountBalance';
+import AccountName from 'components/shared/AccountName';
+import ConnectWalletButton from 'components/shared/ConnectWalletButton';
 import React from 'react';
 import {Link as RouterLink, useHistory} from 'react-router-dom';
 import {useSignOut} from 'common/hooks/useSignOut';

@@ -6,7 +6,7 @@ import {useGetJifBalanceQuery} from 'store/api';
 function AccountBalance() {
   const address = useCurrentAddress();
   const {data} = useGetJifBalanceQuery(address, {
-    pollingInterval: 1000 * 5,
+    pollingInterval: 1000 * 60,
   });
   return <Typography>{data || 0} JIF</Typography>;
 }

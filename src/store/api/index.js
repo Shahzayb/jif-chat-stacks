@@ -1,8 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {cvToHex, cvToString, hexToCV} from '@stacks/transactions';
+import {cvToHex, cvToJSON, cvToString, hexToCV} from '@stacks/transactions';
 import {principalCV} from '@stacks/transactions/dist/clarity/types/principalCV';
-import {JIF_TOKEN_CONTRACT} from 'common/constants';
-import {smartContractApiClient} from 'common/stacks';
+import {JIF_CHAT_CONTRACT, JIF_TOKEN_CONTRACT, MESSAGE_FUNCTION} from 'common/constants';
+import {accountsApiClient, smartContractApiClient, transactionsApiClient} from 'common/stacks';
 
 const api = createApi({
   baseQuery: fetchBaseQuery({baseUrl: '/'}),
@@ -29,9 +29,51 @@ const api = createApi({
         return {data: 0};
       },
     }),
+    getJifTransactions: build.query({
+      async queryFn() {
+        const txs = await accountsApiClient.getAccountTransactions({
+          limit: 50,
+          principal: JIF_CHAT_CONTRACT,
+        });
+        const txids = txs.results
+          .filter(
+            tx =>
+              tx.tx_type === 'contract_call' &&
+              tx.contract_call.function_name === MESSAGE_FUNCTION &&
+              tx.tx_status === 'success'
+          )
+          .map(tx => tx.tx_id);
+
+        const final = await Promise.all(
+          txids.map(async txId => transactionsApiClient.getTransactionById({txId}))
+        );
+        const feed = final.map(tx => {
+          const content = tx.contract_call.function_args?.[0].repr.replace(`u"`, '').slice(0, -1);
+          const attachment = tx.contract_call.function_args?.[1].repr
+            .replace(`(some u"`, '')
+            .slice(0, -2);
+          // eslint-disable-next-line no-nested-ternary
+          const contractLog = tx.events?.[0]
+            ? tx.events?.[0]?.event_type === 'smart_contract_log' && tx.events?.[0].contract_log
+              ? cvToJSON(hexToCV(tx.events?.[0]?.contract_log?.value?.hex))
+              : null
+            : null;
+
+          return {
+            content,
+            attachment: attachment === 'non' ? undefined : attachment,
+            sender: tx.sender_address,
+            id: tx.tx_id,
+            index: contractLog?.value?.index?.value,
+            timestamp: tx.burn_block_time,
+          };
+        });
+        return {data: feed};
+      },
+    }),
   }),
 });
 
-export const {useGetJifBalanceQuery} = api;
+export const {useGetJifBalanceQuery, useGetJifTransactionsQuery} = api;
 
 export default api;
