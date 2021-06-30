@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/jif-chat-stacks/static/js/main.f1dabcf7.chunk.js",
+    "main.js.map": "/jif-chat-stacks/static/js/main.f1dabcf7.chunk.js.map",
+    "polyfills-dom.js": "/jif-chat-stacks/static/js/polyfills-dom.af0dc4ba.chunk.js",
+    "polyfills-dom.js.map": "/jif-chat-stacks/static/js/polyfills-dom.af0dc4ba.chunk.js.map",
+    "runtime-main.js": "/jif-chat-stacks/static/js/runtime-main.167e2902.js",
+    "runtime-main.js.map": "/jif-chat-stacks/static/js/runtime-main.167e2902.js.map",
+    "static/js/3.ab496ff0.chunk.js": "/jif-chat-stacks/static/js/3.ab496ff0.chunk.js",
+    "static/js/3.ab496ff0.chunk.js.map": "/jif-chat-stacks/static/js/3.ab496ff0.chunk.js.map",
+    "static/js/4.3e999e5f.chunk.js": "/jif-chat-stacks/static/js/4.3e999e5f.chunk.js",
+    "static/js/4.3e999e5f.chunk.js.map": "/jif-chat-stacks/static/js/4.3e999e5f.chunk.js.map",
+    "static/js/5.e07ecad0.chunk.js": "/jif-chat-stacks/static/js/5.e07ecad0.chunk.js",
+    "static/js/5.e07ecad0.chunk.js.map": "/jif-chat-stacks/static/js/5.e07ecad0.chunk.js.map",
+    "index.html": "/jif-chat-stacks/index.html",
+    "static/js/3.ab496ff0.chunk.js.LICENSE.txt": "/jif-chat-stacks/static/js/3.ab496ff0.chunk.js.LICENSE.txt",
+    "static/js/polyfills-dom.af0dc4ba.chunk.js.LICENSE.txt": "/jif-chat-stacks/static/js/polyfills-dom.af0dc4ba.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.167e2902.js",
+    "static/js/3.ab496ff0.chunk.js",
+    "static/js/main.f1dabcf7.chunk.js"
+  ]
+}
