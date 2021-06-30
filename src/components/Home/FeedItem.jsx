@@ -4,6 +4,7 @@ import VideoContainer from 'components/Post/VideoContainer';
 import {truncateMiddle} from 'common/utils/stacks-utils';
 import React from 'react';
 import {useGetGifFromGaiaQuery} from 'store/api';
+import {base64StringToBlob} from 'blob-util';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -16,7 +17,15 @@ const useStyles = makeStyles(theme => ({
 function FeedItem({content, sender, attachment}) {
   const classes = useStyles();
 
-  const {data: gif} = useGetGifFromGaiaQuery(attachment);
+  const {data} = useGetGifFromGaiaQuery(attachment);
+
+  const gif = React.useMemo(() => {
+    if (!data) return null;
+    const $gif = base64StringToBlob(data.base64Video, {
+      type: data.type,
+    });
+    return $gif;
+  }, [data]);
 
   return (
     <Paper className={classes.paper}>
