@@ -1,6 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {cvToHex, cvToJSON, cvToString, hexToCV} from '@stacks/transactions';
 import {principalCV} from '@stacks/transactions/dist/clarity/types/principalCV';
+import {base64StringToBlob} from 'blob-util';
 import {JIF_CHAT_CONTRACT, JIF_TOKEN_CONTRACT, MESSAGE_FUNCTION} from 'common/constants';
 import {accountsApiClient, smartContractApiClient, transactionsApiClient} from 'common/stacks';
 
@@ -71,9 +72,31 @@ const api = createApi({
         return {data: feed};
       },
     }),
+    // getPendingJifTransactions: build.query({
+    //   async queryFn() {
+
+    //   },
+    // }),
+    getGifFromGaia: build.query({
+      async queryFn(url) {
+        if (!url) {
+          return {data: null};
+        }
+        try {
+          const fetchRes = await fetch(url);
+          const jsonRes = await fetchRes.json();
+          const gif = base64StringToBlob(jsonRes.base64Video, {
+            type: jsonRes.type,
+          });
+          return {data: gif};
+        } catch (error) {
+          return {error};
+        }
+      },
+    }),
   }),
 });
 
-export const {useGetJifBalanceQuery, useGetJifTransactionsQuery} = api;
+export const {useGetJifBalanceQuery, useGetJifTransactionsQuery, useGetGifFromGaiaQuery} = api;
 
 export default api;
