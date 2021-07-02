@@ -13,10 +13,6 @@ function useFeed() {
     [completed, pending]
   );
 
-  React.useEffect(() => {
-    console.log({combined});
-  }, [combined]);
-
   return combined;
 }
 

@@ -109,7 +109,6 @@ function Post() {
         stxAddress: address,
       });
     } catch (error) {
-      console.error(error);
       setIsSubmitting(false);
     }
   };

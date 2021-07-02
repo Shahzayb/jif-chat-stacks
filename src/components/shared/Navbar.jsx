@@ -24,6 +24,7 @@ import ConnectWalletButton from 'components/shared/ConnectWalletButton';
 import React from 'react';
 import {Link as RouterLink, useHistory} from 'react-router-dom';
 import {useSignOut} from 'common/hooks/useSignOut';
+import ClaimJifButton from './ClaimJifButton';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -130,6 +131,8 @@ function SignedInNavItems() {
   const classes = useStyles();
   return (
     <div className={classes.navItems} display="flex" alignItems="center">
+      <ClaimJifButton />
+      <Divider orientation="vertical" flexItem />
       <MakeAPostButton />
       <Divider orientation="vertical" flexItem />
       <NameAndBalance />
